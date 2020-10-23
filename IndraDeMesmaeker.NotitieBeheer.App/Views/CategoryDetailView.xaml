@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="IndraDeMesmaeker.NotitieBeheer.App.Views.CategoryDetailView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IndraDeMesmaeker.NotitieBeheer.App.Views"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="{Binding CurrentCategory.Name, 
+                                  StringFormat='Category: {0}', 
+                                  FallbackValue='Category: None selected'}"
+                   FontSize="20"
+                   FontWeight="SemiBold"
+                   Grid.Row="0"
+                   Grid.ColumnSpan="2"/>
+        <Separator Style="{StaticResource StyleDetailSeperator}"/>
+
+        <TextBlock Style="{StaticResource StyleLabel}"
+                   Grid.Row="1"
+                   Text="Amount of Notes:"/>
+        <TextBlock Margin="10,5,0,0"
+                   Grid.Row="1"
+                   HorizontalAlignment="Left"
+                   Grid.Column="1"
+                   Text="{Binding CurrentCategory.Notes.Count, 
+                                  Mode=OneWay,
+                                  FallbackValue='Not available'}"/>
+
+        <TextBlock Style="{StaticResource StyleLabel}"
+                   Grid.Row="2"
+                   Text="Description: "/>
+        <TextBlock Margin="10,5,0,0"
+                 Text="{Binding CurrentCategory.Description, 
+                                FallbackValue='Not available'}"                     
+                 HorizontalAlignment="Left"
+                 MinWidth="200"
+                 MaxWidth="250"
+                 Grid.Row="2"
+                 Grid.Column="1"
+                 VerticalAlignment="top"
+                 TextWrapping="Wrap"/>
+    </Grid>
+</UserControl>

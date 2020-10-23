@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="IndraDeMesmaeker.NotitieBeheer.App.Views.NoteDetailView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IndraDeMesmaeker.NotitieBeheer.App.Views"
+             xmlns:wpfx="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d" 
+             Width="350"
+             d:DesignHeight="400" d:DesignWidth="350">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Style="{StaticResource StyleTitle}" 
+                   Grid.Row="0"
+                   Grid.ColumnSpan="2"
+                   Text="{Binding CurrentNote.Name, 
+                                  StringFormat='Note: {0}', 
+                                  FallbackValue='Not available'}"/>
+        <Separator Style="{StaticResource StyleDetailSeperator}"/>
+
+        <TextBlock Style="{StaticResource StyleLabel}"
+                   Grid.Row="1"
+                   VerticalAlignment="Center"
+                   Text="Owner: "/>
+        <TextBlock Margin="10,5,0,0" 
+                   Text="{Binding CurrentNote.Owner, 
+                                FallbackValue='Not available'}"                 
+                   HorizontalAlignment="Stretch"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   VerticalAlignment="Center"/>       
+        
+        <TextBlock Style="{StaticResource StyleLabel}"
+                   Grid.Row="3"
+                   Text="Content: "/>
+        <wpfx:RichTextBox Margin="10,5,0,0"
+                 Text="{Binding CurrentNote.Text, 
+                                FallbackValue='Not available'}"                     
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 MinWidth="200"
+                 MaxWidth="250"
+                 Grid.Row="3"
+                 Grid.Column="1"
+                 IsReadOnly="True"
+                 BorderThickness="0"/>
+    </Grid>
+</UserControl>

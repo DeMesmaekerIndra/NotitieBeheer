@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="IndraDeMesmaeker.NotitieBeheer.App.Views.NoteDetailAddView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IndraDeMesmaeker.NotitieBeheer.App.Views"
+             xmlns:wpfx="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition MinHeight="30" 
+                           MaxHeight="150"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Style="{StaticResource StyleTitle}" 
+                   Grid.Row="0"
+                   Grid.ColumnSpan="2"
+                   Text="{Binding NewNote.Name, 
+                                  StringFormat='New Note: {0}', 
+                                  FallbackValue='Not available',
+                                  UpdateSourceTrigger=PropertyChanged}"/>
+        <Separator Style="{StaticResource StyleDetailSeperator}"/>
+
+        <TextBlock Style="{StaticResource StyleLabel}"
+                   Grid.Row="1"
+                   Text="Name: "/>
+        <TextBox Style="{StaticResource StyleInput}"
+                 Grid.Row="1"
+                 Text="{Binding NewNote.Name,
+                                FallbackValue='Not Available',
+                                UpdateSourceTrigger=PropertyChanged}"/>
+
+        <TextBlock Style="{StaticResource StyleLabel}"
+                   Grid.Row="2"
+                   Text="Owner: "/>
+        <TextBox Style="{StaticResource StyleInput}"
+                 Grid.Row="2"
+                 Text="{Binding NewNote.Owner,
+                                FallbackValue='Not Available',
+                                UpdateSourceTrigger=PropertyChanged}"/>
+
+        <TextBlock Style="{StaticResource StyleLabel}"
+                   Grid.Row="3"
+                   Text="Category: "/>
+        <ComboBox  Grid.Row="3"
+                   Grid.Column="1"
+                   Width="135"
+                   HorizontalAlignment="Left"
+                   Margin="10,5,0,0"
+                   ItemsSource="{Binding Categories}"
+                   SelectedItem="{Binding CurrentCategory}"/>
+
+        <TextBlock Style="{StaticResource StyleLabel}"
+                   Grid.Row="4"
+                   Text="Content: "/>
+        <wpfx:RichTextBox Style="{StaticResource StyleContentInput}"
+                 Text="{Binding NewNote.Text, 
+                                FallbackValue='Not available',  
+                                UpdateSourceTrigger=PropertyChanged}"                
+                 Grid.Row="4">
+            <wpfx:RichTextBoxFormatBarManager.FormatBar>
+                <wpfx:RichTextBoxFormatBar/>
+            </wpfx:RichTextBoxFormatBarManager.FormatBar>
+        </wpfx:RichTextBox>
+
+        <Button Style="{StaticResource StyleConfirmCancelButton}"
+                Grid.Column="0"
+                Content="Add Note"
+                Command="{Binding AddNoteCommand}"/>
+        <Button Style="{StaticResource StyleConfirmCancelButton}"
+                HorizontalAlignment="Left"
+                Margin="10,5,0,0"
+                Grid.Column="1"
+                Content="Cancel"
+                Command="{Binding CancelAddNoteCommand}"/>
+    </Grid>
+</UserControl>

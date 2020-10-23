@@ -1,0 +1,126 @@
+﻿<Application x:Class="IndraDeMesmaeker.NotitieBeheer.App.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:IndraDeMesmaeker.NotitieBeheer.App"
+             xmlns:viewmodels="clr-namespace:IndraDeMesmaeker.NotitieBeheer.App.ViewModels"
+             xmlns:wpfx="http://schemas.xceed.com/wpf/xaml/toolkit" 
+             xmlns:views="clr-namespace:IndraDeMesmaeker.NotitieBeheer.App.Views"
+             StartupUri="views/MainWindowView.xaml">
+    <Application.Resources>
+        <!--Styles: Everything is used atleast 2 times-->
+        <Style x:Key="StyleTitle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="0,0,0,0"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+
+        <Style x:Key="StyleDetailSeperator" TargetType="Separator">
+            <Setter Property="Grid.Column" Value="0"/>
+            <Setter Property="Grid.ColumnSpan" Value="3"/>
+            <Setter Property="Grid.Row" Value="0"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="Margin" Value="0,0,50,0"/>
+        </Style>
+
+        <Style x:Key="StyleLabel" TargetType="TextBlock">
+            <Setter Property="Grid.Column" Value="0"/>
+            <Setter Property="Margin" Value="0,5,0,0"/>
+            <Setter Property="TextDecorations" Value="underline"/>
+        </Style>
+
+        <Style x:Key="StyleInput" TargetType="TextBox">
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="Grid.ColumnSpan" Value="2"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="10,5,0,0"/>
+            <Setter Property="MinWidth" Value="135"/>
+            <Setter Property="MaxWidth" Value="200"/>
+        </Style>
+
+        <Style x:Key="StyleContentInput" TargetType="wpfx:RichTextBox">
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="Grid.RowSpan" Value="2"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="10,5,0,0"/>
+            <Setter Property="MaxWidth" Value="250"/>
+            <Setter Property="MinHeight" Value="125"/>
+            <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="AcceptsTab" Value="True"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
+        </Style>
+
+        <Style x:Key="StyleDescriptionInput" TargetType="TextBox">
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="Grid.RowSpan" Value="2"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="10,5,0,0"/>
+            <Setter Property="MinWidth" Value="250"/>            
+            <Setter Property="MinHeight" Value="150"/>
+            <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="AcceptsTab" Value="True"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
+        </Style>
+
+        <Style x:Key="StyleColorPickerInput" TargetType="wpfx:ColorPicker">
+            <Setter Property="Margin" Value="10,5,0,0"/>
+            <Setter Property="Grid.Row" Value="2"/>
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="Width" Value="135"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+
+        <Style x:Key="StyleConfirmCancelButton" TargetType="Button">
+            <Setter Property="Width" Value="90"/>
+            <Setter Property="Margin" Value="0,5,0,0"/>
+            <Setter Property="Grid.Row" Value="6"/>
+        </Style>
+
+        <Style x:Key="StyleSearchBox" TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="false">
+                    <Setter Property="Text" Value="Search..."/>
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="Text" Value=""/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        <!--Data Templates: Categories-->
+        <DataTemplate DataType="{x:Type viewmodels:CategoriesListViewModel}">
+            <views:CategoriesListView></views:CategoriesListView>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:CategoryDetailViewModel}">
+            <views:CategoryDetailView></views:CategoryDetailView>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:CategoryDetailEditViewModel}">
+            <views:CategoryDetailEditView></views:CategoryDetailEditView>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:CategoryDetailAddViewModel}">
+            <views:CategoryDetailAddView></views:CategoryDetailAddView>
+        </DataTemplate>
+
+        <!---Data Templates: Notes-->
+        <DataTemplate DataType="{x:Type viewmodels:NotesListViewModel}">
+            <views:NotesListView></views:NotesListView>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:NoteDetailViewModel}">
+            <views:NoteDetailView></views:NoteDetailView>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:NoteDetailEditViewModel}">
+            <views:NoteDetailEditView></views:NoteDetailEditView>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:NoteDetailAddViewModel}">
+            <views:NoteDetailAddView></views:NoteDetailAddView>
+        </DataTemplate>
+
+    </Application.Resources>
+</Application>
